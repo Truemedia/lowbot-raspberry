@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Truemedia/mindstack-raspberry#readme",
   "dependencies": {
-    "pi-camera": "^1.2.1"
+    "pi-camera": "^1.2.1",
+    "raspivid": "^1.0.0"
   }
 }
