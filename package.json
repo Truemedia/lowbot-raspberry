@@ -1,0 +1,25 @@
+{
+  "name": "mindstack-raspberry",
+  "version": "0.1.0",
+  "description": "Raspberry PI adapter for Mind Stack",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Truemedia/mindstack-raspberry.git"
+  },
+  "keywords": [
+    "mindstack",
+    "adapter",
+    "raspberry",
+    "pi"
+  ],
+  "author": "Wade Penistone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Truemedia/mindstack-raspberry/issues"
+  },
+  "homepage": "https://github.com/Truemedia/mindstack-raspberry#readme"
+}
