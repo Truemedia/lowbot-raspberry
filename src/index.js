@@ -1,3 +1,5 @@
+const Cva = require('./cva/src');
+
 /**
   * Raspberry PI adapter
   * @namespace adapter
@@ -32,7 +34,7 @@ module.exports = {
     /**
       * Computer vision algorithms
       */
-    cva: {support: true, algorithms: ['capture']},
+    cva: {support: true, algorithms: ['capture'], src: Cva},
   },
   /**
     * Output configuration
@@ -50,5 +52,7 @@ module.exports = {
     * @namespace vars
     * @param {String} token - Token used to authenticate
     */
-  vars: {}
+  vars: {
+    streamDuration: 'PI_STREAM_DURATION' // Stream duration (Human readable unit)
+  }
 };
