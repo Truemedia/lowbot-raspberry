@@ -1,6 +1,7 @@
+const fs = require('fs');
 const { StreamCamera, Codec } = require('pi-camera-connect');
 const HumanToMilliseconds = require('human-to-milliseconds')
-const fs = require('fs');
+const bn = require('st-basename');
 
 class Src
 {
@@ -13,6 +14,19 @@ class Src
     this.streamCamera = new StreamCamera({
       codec: Codec.H264
     });
+    this.settings = {...this.defaults, ...opts};
+  }
+
+  get defaults()
+  {
+    return {
+      streamDuration: '60s'
+    };
+  }
+
+  get duration()
+  {
+    return 30000;
   }
 
   /**
@@ -20,7 +34,7 @@ class Src
    */
    setVideoStream()
    {
-     let filename = 'video-stream.h264';
+     let filename = bn('h264');
      const writeStream = fs.createWriteStream(filename);
 
      const videoStream = this.streamCamera.createStream();
@@ -34,11 +48,15 @@ class Src
      */
    init()
    {
-     HumanToMilliseconds('30s', (err, ms) => {
-       this.streamCamera.startCapture().then(() => {
-         setTimeout(() => streamCamera.stopCapture(), ms);
-       });
-     });
+     return this.streamCamera.startCapture();
+   }
+
+   /**
+     * Terminate video source (stop video output)
+     */
+   terminate()
+   {
+     this.streamCamera.stopCapture();
    }
 }
 
