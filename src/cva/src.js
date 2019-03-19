@@ -1,7 +1,5 @@
-const fs = require('fs');
 const { StreamCamera, Codec } = require('pi-camera-connect');
 const HumanToMilliseconds = require('human-to-milliseconds')
-const bn = require('st-basename');
 
 class Src
 {
@@ -30,17 +28,11 @@ class Src
   }
 
   /**
-   * Set video stream from sourcing (triggered by 'capture' algorithm)
+   * Get video stream from sourcing (triggered by 'capture' algorithm)
    */
-   setVideoStream()
+   getVideoStream()
    {
-     let filename = bn('h264');
-     const writeStream = fs.createWriteStream(filename);
-
-     const videoStream = this.streamCamera.createStream();
-
-     videoStream.pipe(writeStream);
-     return videoStream;
+     return this.streamCamera.createStream();
    }
 
    /**
