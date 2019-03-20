@@ -1,5 +1,5 @@
 const { StreamCamera, Codec } = require('pi-camera-connect');
-const HumanToMilliseconds = require('human-to-milliseconds')
+const humanInterval = require('human-interval');
 
 class Src
 {
@@ -18,13 +18,16 @@ class Src
   get defaults()
   {
     return {
-      streamDuration: '60s'
+      streamDuration: '1 minute'
     };
   }
 
+  /**
+    * Duration of stream (in ms)
+    */
   get duration()
   {
-    return 30000;
+    return humanInterval(this.settings.streamDuration);
   }
 
   /**
